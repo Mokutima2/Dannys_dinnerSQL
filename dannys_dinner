@@ -144,4 +144,27 @@ What is the most purchased item on the menu and how many times was it purchased 
 | ramen        | 8                   |
 
 
+QUESTION FIVE
+Which item was the most popular for each customer?
+
+*****QUERY****
+    SET search_path = dannys_diner;
+    SELECT
+    sales.customer_id, menu.product_name, COUNT (sales.product_id) AS order_count
+        from menu
+        join sales
+        using (product_id)
+        group by customer_id, product_name, product_id
+        order by product_id DESC;
+        
+        *****ANSWER*****
+
+| customer_id | product_name | order_count |
+| ----------- | ------------ | ----------- |
+| A           | ramen        | 3           |
+| B           | ramen        | 2           |
+| C           | ramen        | 3           |
+
+
+
 
